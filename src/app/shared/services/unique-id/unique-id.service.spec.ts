@@ -2,7 +2,7 @@ import { UniqueIdService } from './unique-id.service';
 
 describe(UniqueIdService.name, () => {
 
-  let service: UniqueIdService;
+  let service: UniqueIdService = null;
 
   beforeEach(() => {
     service = new UniqueIdService();
@@ -32,11 +32,11 @@ describe(UniqueIdService.name, () => {
 
   it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name}
     should throw when called with empty`, () => {
-    const emptyValues = [null, undefined, '', '0', '1'];
-    emptyValues.forEach(emptyValue => {
-      expect(() => service.generateUniqueIdWithPrefix(emptyValue!))
-        .withContext(`Empty value: ${emptyValue}`)
-        .toThrow();
+      const emptyValues = [null, undefined, '', '0', '1'];
+      emptyValues.forEach(emptyValue => {
+        expect(() => service.generateUniqueIdWithPrefix(emptyValue))
+          .withContext(`Empty value: ${emptyValue}`)
+          .toThrow();
+      });
     });
-  });
 });
